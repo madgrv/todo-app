@@ -1,0 +1,23 @@
+/* header.module.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #009e6e 50%, #005e65);
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(68, 29, 176, 0.532), 0 12px 18px rgba(29, 176, 115, 0.64);
+  }
+  
+  .title {
+    color: white;
+    font-size: 24px;
+    font-weight: 900;
+  }
+  
+  .date {
+    color: white;
+    font-size: 24px;
+    font-weight: 900;    
+    text-shadow: 0 2px 8px #00412e;
+  }
+  
