@@ -1,12 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import style from './styles/app.module.css'
+
 import Header from './components/Header';
+import TodoContainer from './components/TodoContainer';
 
 function App() {
   return (
-    <div className="App">
+    <div className={style.container}>
       <Header />
-      Hello World! Here will live my To Do list - App!
+      <TodoContainer />
     </div>
   );
 }
