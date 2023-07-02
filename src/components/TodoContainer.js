@@ -73,10 +73,20 @@ const TodoContainer = () => {
     }
   }, []);
 
+  // Function to count the tasks that are not completed
+  const remainingTasks = () => {
+    return tasks.filter((task) => !task.completed).length;
+  };
+
   return (
     <div className={styles.container}>
         {/* pass functionality to the Input component  */}
         <Input addTask={addTask} />
+        {remainingTasks() > 1 || remainingTasks() === 0 ? 
+           <h2>To be completed: {remainingTasks()} tasks</h2>  : 
+           <h2>To be completed: {remainingTasks()} task</h2> 
+        }
+        {/* <h2>Remaining tasks to be completed: {remainingTasks()}</h2> */}
         {tasks.map((task) => (
              <TodoItem 
               key={task.id} 
