@@ -14,7 +14,7 @@ const TodoItem = ({ task, deleteTask, markAsCompleted }) => {
     }
 
     return(
-        <div>
+        <div className={styles.toDoCard}>
             <div className={`${styles.card} ${task.completed ? styles.cardCompleted : ''}`} >
 
                 <input 
@@ -27,7 +27,7 @@ const TodoItem = ({ task, deleteTask, markAsCompleted }) => {
                 <button>Edit</button>
             </div>
             <div>
-                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleDelete} className={styles.delButton}>🗑</button>
             </div>
         </div>
     )
