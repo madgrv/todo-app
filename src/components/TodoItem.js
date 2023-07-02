@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import styles from '../styles/todo-item.module.css';
 
-const TodoItem = ({ task, deleteTask }) => {
+const TodoItem = ({ task, deleteTask, markAsCompleted }) => {
     // Function to add delete functionality
     const handleDelete = () => {
         // inherit deleTask function from containter component 
@@ -9,11 +9,19 @@ const TodoItem = ({ task, deleteTask }) => {
         deleteTask(task.key)
     }
 
+    const handleComplete = () => {
+        markAsCompleted(task.id)
+    }
 
     return(
-        <div className={styles.card}>
+        <div className={`${styles.card} ${task.completed ? styles.cardCompleted : ''}`} >
 
-            <input type="checkbox" checked={styles.card} />
+            <input 
+                type="checkbox" 
+                // checked={styles.card} 
+                checked={task.completed}
+                onChange={handleComplete}
+            />
             <span className={styles.task}>{task.title}</span>
             <div>
                 <button>Edit</button>

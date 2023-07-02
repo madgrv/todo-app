@@ -56,6 +56,15 @@ const TodoContainer = () => {
     sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }  
 
+  // A function to mark task as completed
+  const markAsCompleted = (taskId) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(updatedTasks);
+    sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  };
+
   // Function to delete a task
   const deleteTask = (taskId) => {
     // Remove the task from session storage
@@ -89,10 +98,10 @@ const TodoContainer = () => {
         {/* <h2>Remaining tasks to be completed: {remainingTasks()}</h2> */}
         {tasks.map((task) => (
              <TodoItem 
-              key={task.id} 
-              task={task} 
-              // // completed={task.completed} 
-              deleteTask={() => deleteTask(task.id)}
+                key={task.id} 
+                task={task} 
+                markAsCompleted={markAsCompleted}
+                deleteTask={() => deleteTask(task.id)}
               />
         ))}
     </div>
