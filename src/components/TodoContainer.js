@@ -4,7 +4,7 @@ import Input from './Input'
 import TodoItem from './TodoItem'
 
 
-const TodoContainer = (props) => {
+const TodoContainer = () => {
   // A temporary list of tasks
   const tasksData = [
       {
@@ -28,9 +28,12 @@ const TodoContainer = (props) => {
         completed: false,
       },
   ];
-    
+  sessionStorage.setItem('tasks', JSON.stringify(tasksData))
+  
+
   // Storing the state into a tasks variable to hold the initial hardcoded tasks
   const [tasks, setTasks] = useState(tasksData); 
+  console.log(tasks)
 
   // Function to add new task to session storage from user input
   const addTask = (newTask) => {
@@ -40,6 +43,7 @@ const TodoContainer = (props) => {
     }
 
     const newTaskObj = {
+      // use timestamp as unique id
       id: Date.now(),
       title: newTask,
       completed: false,
@@ -48,7 +52,7 @@ const TodoContainer = (props) => {
     setTasks((prevTasks) => [...prevTasks, newTaskObj]);
 
     const updatedTasks = [...tasks, newTaskObj];
-    // Set session storage and update with the new task
+    // Update with the new task
     sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }  
 
@@ -56,9 +60,9 @@ const TodoContainer = (props) => {
   const deleteTask = (taskId) => {
     // Remove the task from session storage
     const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
     sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
     // Update the state to trigger re-render
-    setTasks(updatedTasks);
   };
 
   useEffect(() => {
@@ -74,7 +78,12 @@ const TodoContainer = (props) => {
         {/* pass functionality to the Input component  */}
         <Input addTask={addTask} />
         {tasks.map((task) => (
-             <TodoItem key={task.id} title={task.title} completed={task.completed} deleteTask={deleteTask}/>
+             <TodoItem 
+              key={task.id} 
+              task={task} 
+              // // completed={task.completed} 
+              deleteTask={() => deleteTask(task.id)}
+              />
         ))}
     </div>
   );
