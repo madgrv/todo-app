@@ -4,10 +4,13 @@ import styles from '../styles/todo-item.module.css';
 const TodoItem = (props) => {
     return(
         <div className={styles.card}>
-            <input type="checkbox" checked={props.completed} />
-            <span>{props.title}</span>
-            <button>Edit</button>
-            <button>Delete</button>
+
+            <input type="checkbox" checked={styles.card} />
+            <span className={styles.task}>{props.title}</span>
+            <div>
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
         </div>
     )
 }

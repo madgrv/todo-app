@@ -1,30 +1,44 @@
 /* todo-item.module.css */
 
 .card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px;
-  }
-  
-  .card input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  .card button {
-    background-color: #e0e0e0;
-    border: none;
-    padding: 6px 10px;
-    margin-left: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .card button:first-of-type {
-    background-color: #2196f3;
-    color: #fff;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #005e65;
+  color: #fff;
+  font-weight: 600;
+  font-size: 22px;
+  padding: 10px 10px 13px 10px;
+  border-radius: 4px;
+  margin: 10px;
+  min-width: 400px;
+}
+
+.task {
+  flex: 1;
+}
+
+.card input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.card button {
+  background-color: #fc6a6a;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 0px 3px 3px 0px;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+.card button:first-of-type {
+  background-color: #0097a1;
+  color: #fff;
+  border-radius: 3px 0px 0px 3px;
+  max-width: 60px;
+}
+
+.completed {
+  background-color: #1cb273;
+}
