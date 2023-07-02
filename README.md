@@ -4,15 +4,15 @@
 ### Requirements
 The application should have the following features:
 
-Ability to add new tasks to the list
+- Ability to add new tasks to the list
 
-Ability to mark tasks as completed
+- Ability to mark tasks as completed
 
-Ability to remove tasks from the list
+- Ability to remove tasks from the list
 
-Display the total number of tasks remaining
+- Display the total number of tasks remaining
 
-Store tasks in the browser's local storage, so that they persist after the page is reloaded
+- Store tasks in the browser's local storage, so that they persist after the page is reloaded
 
 
  ## Installation
