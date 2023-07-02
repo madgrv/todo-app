@@ -2,9 +2,11 @@ import React, { useState, useEffect} from 'react';
 import styles from '../styles/todo-item.module.css';
 
 const TodoItem = (props) => {
-
+    // Function to add delete functionality
     const handleDelete = () => {
-        props.deleteTask(props.task.id)
+        // inherit deleTask function from containter component 
+        // use task ID to identify task to be removed
+        props.deleteTask(props.key)
     }
 
 
