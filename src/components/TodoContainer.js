@@ -32,11 +32,24 @@ const TodoContainer = () => {
   sessionStorage.setItem('tasks', JSON.stringify(tasksData))
   
 
+
   // Storing the state into a tasks variable to hold the initial hardcoded tasks
   const [tasks, setTasks] = useState(tasksData); 
- // Set state to show and hide completed and incomplete tasks
- const [hideCompleted, setHideCompleted] = useState(false);
- const [hideIncomplete, setHideIncomplete] = useState(false);
+
+  // Set state to show and hide completed and incomplete tasks
+  const [showCompleted, setShowCompleted] = useState(true);
+  const [showIncomplete, setShowIncomplete] = useState(true);  
+
+  // Create two separate event handler functions for each switch to handle the changes:
+  const handleShowCompletedChange = () => {
+    setShowCompleted(prevShowCompleted => !prevShowCompleted);
+  };
+  
+  const handleShowIncompleteChange = () => {
+    setShowIncomplete(prevShowIncomplete => !prevShowIncomplete);
+  };
+
+
 
   // Function to add new task to session storage from user input
   const addTask = (newTask) => {
@@ -59,6 +72,8 @@ const TodoContainer = () => {
     sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }  
 
+
+
   // A function to mark task as completed
   const markAsCompleted = (taskId) => {
     const updatedTasks = tasks.map((task) =>
@@ -67,6 +82,8 @@ const TodoContainer = () => {
     setTasks(updatedTasks);
     sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
+
+
 
   // Function to delete a task
   const deleteTask = (taskId) => {
@@ -77,6 +94,8 @@ const TodoContainer = () => {
     // Update the state to trigger re-render
   };
 
+
+
   useEffect(() => {
     // Fetch tasks from session storage on component mount
     const storedTasks = JSON.parse(sessionStorage.getItem('tasks'));
@@ -85,10 +104,29 @@ const TodoContainer = () => {
     }
   }, []);
 
+
+
   // Function to count the tasks that are not completed
   const remainingTasks = () => {
     return tasks.filter((task) => !task.completed).length;
   };
+
+
+
+  // filter method to show or hide completed and incomplete tasks 
+  const filteredTasks = tasks.filter(task => {
+    if (showCompleted && showIncomplete) {
+      return true; // Show all tasks
+    } else if (showCompleted) {
+      return task.completed; // Show only completed tasks
+    } else if (showIncomplete) {
+      return !task.completed; // Show only incomplete tasks
+    } else {
+      return false; // Hide all tasks
+    }
+  });
+
+  
 
   return (
     <div className={styles.container}>
@@ -98,9 +136,14 @@ const TodoContainer = () => {
            <h2>To be completed: {remainingTasks()} tasks</h2>  : 
            <h2>To be completed: {remainingTasks()} task</h2> 
         }
-        <TaskFilter />
+        <TaskFilter
+          showCompleted={showCompleted}
+          showIncomplete={showIncomplete}
+          onShowCompletedChange={handleShowCompletedChange}
+          onShowIncompleteChange={handleShowIncompleteChange}
+        />
         {/* <h2>Remaining tasks to be completed: {remainingTasks()}</h2> */}
-        {tasks.map((task) => (
+        {filteredTasks.map((task) => (
              <TodoItem 
                 key={task.id} 
                 task={task} 
