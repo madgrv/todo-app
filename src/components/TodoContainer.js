@@ -5,7 +5,6 @@ import TodoItem from './TodoItem'
 
 
 const TodoContainer = (props) => {
-
   // A temporary list of tasks
   const tasksData = [
       {
@@ -53,12 +52,29 @@ const TodoContainer = (props) => {
     sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }  
 
+  // Function to delete a task
+  const deleteTask = (taskId) => {
+    // Remove the task from session storage
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    sessionStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    // Update the state to trigger re-render
+    setTasks(updatedTasks);
+  };
+
+  useEffect(() => {
+    // Fetch tasks from session storage on component mount
+    const storedTasks = JSON.parse(sessionStorage.getItem('tasks'));
+    if (storedTasks) {
+      setTasks(storedTasks);
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
         {/* pass functionality to the Input component  */}
         <Input addTask={addTask} />
         {tasks.map((task) => (
-             <TodoItem key={task.id} title={task.title} completed={task.completed}/>
+             <TodoItem key={task.id} title={task.title} completed={task.completed} deleteTask={deleteTask}/>
         ))}
     </div>
   );

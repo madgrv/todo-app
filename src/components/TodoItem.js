@@ -3,7 +3,9 @@ import styles from '../styles/todo-item.module.css';
 
 const TodoItem = (props) => {
 
-    
+    const handleDelete = () => {
+        props.deleteTask(props.task.id)
+    }
 
 
     return(
@@ -13,7 +15,7 @@ const TodoItem = (props) => {
             <span className={styles.task}>{props.title}</span>
             <div>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
     )
