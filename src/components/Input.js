@@ -2,18 +2,27 @@ import React, { useState, useEffect} from 'react';
 import styles from '../styles/input.module.css';
 
 
-const Input = () => {
-    const [input, setInput] = useState("")
+const Input = (props) => {
+
+    // A state variable to hold the value of the input field where the user enters the task name. 
+  // Initialised with an empty string
+  const [newTask, setNewTask] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props(newTask);
+    setNewTask(''); // Reset input box
+  }
 
     return(
         <div className={styles.input}>
             <input
                 type='text'
+                value={newTask}
                 placeholder='Add a new task here'
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => setNewTask(e.target.value)}
             />
-            <button>Add</button>
+            <button onClick={handleSubmit}>Add</button>
         </div>
 
        
