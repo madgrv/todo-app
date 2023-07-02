@@ -24,7 +24,7 @@ const TodoItem = ({ task, deleteTask, markAsCompleted }) => {
                     onChange={handleComplete}
                 />
                 <span className={styles.task}>{task.title}</span>
-                <span className={styles.editButton}>✏️</span>
+                {/* <span className={styles.editButton}>✏️</span> */}
             </div>
             <div>
                 <button onClick={handleDelete} className={styles.delButton}>🗑</button>
