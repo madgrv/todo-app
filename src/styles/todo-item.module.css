@@ -1,7 +1,7 @@
 /* todo-item.module.css */
 .toDoCard {
   display: flex;
-
+  align-items: center;
 }
 
 .card {
@@ -15,7 +15,7 @@
   padding: 10px 10px 13px 10px;
   border-radius: 4px;
   box-shadow: 0px 3px 10px rgba(46, 0, 79, 0.254);
-  margin: 10px;
+  margin: 15px;
   min-width: 400px;
 }
 
@@ -32,22 +32,28 @@
   margin-right: 10px;
 }
 
+.editButton {
+  margin: 5px 15px 5px ;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.editButton::hover {
+  transform:translateY(-2px) ;
+  text-shadow: 0 2px 2px  rgba(46, 0, 79, 0.254);
+}
+
 .delButton {
   background-color: #fc6a6a34;
   color: #fff;
   border: solid 1px red;
-  padding: 6px 10px;
+  /* padding: 6px 10px; */
   border-radius: 3px;
   cursor: pointer;
-  min-width: 60px;
+  min-width: 30px;
+  box-shadow: 0px 3px 10px rgba(46, 0, 79, 0.254);
+  padding: 18px;
 }
-
-/* .card button:first-of-type {
-  background-color: #0097a1;
-  color: #fff;
-  border-radius: 3px 0px 0px 3px;
-  max-width: 60px;
-} */
 
 .completed {
   background-color: #1cb273;
