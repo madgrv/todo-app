@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/todo-container.module.css';
 import Input from './Input'
 import TodoItem from './TodoItem'
+import TaskFilter from './TaskFilter';
 
 
 const TodoContainer = () => {
@@ -33,7 +34,9 @@ const TodoContainer = () => {
 
   // Storing the state into a tasks variable to hold the initial hardcoded tasks
   const [tasks, setTasks] = useState(tasksData); 
-  console.log(tasks)
+ // Set state to show and hide completed and incomplete tasks
+ const [hideCompleted, setHideCompleted] = useState(false);
+ const [hideIncomplete, setHideIncomplete] = useState(false);
 
   // Function to add new task to session storage from user input
   const addTask = (newTask) => {
@@ -95,6 +98,7 @@ const TodoContainer = () => {
            <h2>To be completed: {remainingTasks()} tasks</h2>  : 
            <h2>To be completed: {remainingTasks()} task</h2> 
         }
+        <TaskFilter />
         {/* <h2>Remaining tasks to be completed: {remainingTasks()}</h2> */}
         {tasks.map((task) => (
              <TodoItem 
