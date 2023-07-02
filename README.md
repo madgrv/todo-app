@@ -3,6 +3,7 @@
 
 ### Requirements
 The application should have the following features:
+
 Ability to add new tasks to the list
 
 Ability to mark tasks as completed
