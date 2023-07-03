@@ -16,11 +16,10 @@
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
   }
   
   .switchGroup {
-    /* display: inline-block; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

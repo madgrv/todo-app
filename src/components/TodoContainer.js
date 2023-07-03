@@ -28,6 +28,11 @@ const TodoContainer = () => {
         title: 'Read a book',
         completed: false,
       },
+      {
+        id: 5,
+        title: 'Add an extra long task to test the text wrap functionality for smaller screens',
+        completed: true,
+      },
   ];
   sessionStorage.setItem('tasks', JSON.stringify(tasksData))
   
@@ -132,16 +137,16 @@ const TodoContainer = () => {
     <div className={styles.container}>
         {/* pass functionality to the Input component  */}
         <Input addTask={addTask} />
-        {remainingTasks() > 1 || remainingTasks() === 0 ? 
-           <h2>To be completed: {remainingTasks()} tasks</h2>  : 
-           <h2>To be completed: {remainingTasks()} task</h2> 
-        }
         <TaskFilter
           showCompleted={showCompleted}
           showIncomplete={showIncomplete}
           onShowCompletedChange={handleShowCompletedChange}
           onShowIncompleteChange={handleShowIncompleteChange}
-        />
+          />
+          {remainingTasks() > 1 || remainingTasks() === 0 ? 
+             <h3>To be completed: {remainingTasks()} tasks</h3>  : 
+             <h3>To be completed: {remainingTasks()} task</h3> 
+          }
         {/* <h2>Remaining tasks to be completed: {remainingTasks()}</h2> */}
         {filteredTasks.map((task) => (
              <TodoItem 
