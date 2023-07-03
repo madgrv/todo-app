@@ -16,3 +16,32 @@
 h2 {
     color: #6f6f6f;
 }
+
+input[type="checkbox"] {
+    transform: scale(1.4);
+    position: relative;
+    appearance: none;
+    background-color: #9c9c9c00;
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    border: solid 0.5px grey;
+  }
+  
+  input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: #595959; /* Color of the tick */
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    opacity: 1;
+  }

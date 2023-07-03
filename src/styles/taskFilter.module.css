@@ -30,7 +30,13 @@
   }
   
   .switchGroup label {
+    display: flex;
+    align-items: center;
     margin-left: 10px;
     font-size: 16px;
   }
   
+  .switchGroup label input[type="checkbox"] {
+    margin-right: 10px; /* Adjust the margin as needed */
+  }
+ 
